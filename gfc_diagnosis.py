@@ -1,5 +1,5 @@
 """
-Kⁱ⁰⁷ 삼성생명 GFC | 법인 리스크 사전 진단표
+Kⁱ⁰⁷ 삼성생명 GFC | 법인 리스크 사전 진단표 260202
 Streamlit 기반 AI 진단 엔진 + KPI 대시보드
 
 설치 : pip install streamlit plotly numpy
