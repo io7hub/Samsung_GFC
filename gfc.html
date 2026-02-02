@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kⁱ⁰⁷ 삼성생명 GFC · 법인 리스크 사전 진단표</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1623;--bg-h:#0a1220;--bg-sb:#111d2e;--bg-c:#131f33;--bg-co:#1a2d4a;--bg-n:#0f1a2a;
+  --bd:#1e3a5f;--t:#cbd5e1;--tm:#64748b;--tw:#fff;--ts:#94a3b8;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#0a1220 0%,#152238 60%,#1a2d4a 100%);border-bottom:1px solid var(--bd);padding:28px 24px 22px;position:relative;overflow:hidden}
+.hdr .o1{position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.12) 0%,transparent 70%)}
+.hdr .o2{position:absolute;bottom:-40px;left:100px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(202,138,4,.08) 0%,transparent 70%)}
+.hi{max-width:840px;margin:0 auto;position:relative;z-index:1}
+.lv{display:inline-flex;align-items:center;gap:7px;margin-bottom:10px}
+.ld{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+.lv span{font-size:10.5px;font-weight:700;color:#60a5fa;letter-spacing:1.6px;text-transform:uppercase}
+.hdr h1{font-size:23px;font-weight:800;color:#fff;line-height:1.3}
+.hdr h1 .hl{color:#60a5fa}
+.hdr .ds{font-size:11.5px;color:var(--tm);margin-top:6px;max-width:600px;line-height:1.6}
+
+/* COMPANY INFO */
+.ci-p{background:var(--bg-sb);border-bottom:1px solid var(--bd)}
+.ci-h{max-width:840px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:7px;cursor:pointer;user-select:none}
+.ci-h>span{font-size:12px;font-weight:600;color:var(--ts)}
+.ci-tg{font-size:10px;color:var(--tm);margin-left:auto;transition:transform .2s}
+.ci-tg.op{transform:rotate(180deg)}
+.ci-b{max-width:840px;margin:0 auto;padding:0 24px 14px;display:none}
+.ci-b.op{display:block}
+.ci-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ci-f label{display:block;font-size:9.5px;color:var(--tm);font-weight:600;letter-spacing:.6px;margin-bottom:3px;text-transform:uppercase}
+.ci-f input{width:100%;background:#0f1a2a;border:1px solid var(--bd);border-radius:6px;padding:7px 9px;color:#fff;font-size:12.5px;font-family:inherit;outline:none;transition:border-color .2s}
+.ci-f input:focus{border-color:#60a5fa}
+.ci-f input::placeholder{color:#475569}
+
+/* STATS */
+.sb{background:var(--bg-sb);border-bottom:1px solid var(--bd);padding:13px 24px}
+.sbi{max-width:840px;margin:0 auto}
+.pr{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:9px}
+.rw{display:flex;align-items:center;gap:7px}
+.rt{font-size:11.5px;font-weight:700;color:#fff}
+.rp{font-size:9.5px;color:var(--tm)}
+.po{flex:1;min-width:110px;height:5px;background:var(--bd);border-radius:3px;overflow:hidden}
+.pi{height:100%;width:0%;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:3px;transition:width .35s}
+.br{font-size:10px;color:var(--tm);background:none;border:1px solid var(--bd);border-radius:5px;padding:4px 8px;cursor:pointer;font-family:inherit;transition:color .2s,border-color .2s}
+.br:hover{color:#fff;border-color:#60a5fa}
+.fr{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.fp{display:flex;align-items:center;gap:5px;background:#1a2d4a;border:1px solid var(--bd);border-radius:7px;padding:4px 7px;cursor:pointer;transition:all .2s;user-select:none}
+.fp:hover{border-color:#60a5fa}
+.fp .fi{font-size:11px}.fp .fl{font-size:10px;font-weight:600;color:#94a3b8}.fp .fc{font-size:9px;font-weight:700;color:var(--tm)}
+.fp .fc.dn{color:#22c55e}
+.wlg{display:flex;gap:10px;flex-wrap:wrap;padding-top:7px;border-top:1px solid var(--bd);margin-top:7px}
+.wli{display:flex;align-items:center;gap:4px}
+.wld{width:9px;height:9px;border-radius:2px}
+.wll{font-size:9px;color:var(--tm)}
+
+/* CHECKLIST */
+.main{max-width:840px;margin:0 auto;padding:18px 24px 8px}
+.cat{margin-bottom:18px}
+.ch{display:flex;align-items:center;gap:9px;margin-bottom:9px;cursor:pointer;user-select:none}
+.cico{width:33px;height:33px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ct{flex:1}
+.ctr{display:flex;align-items:center;gap:6px}
+.cn{font-size:13.5px;font-weight:700;color:#fff}
+.cbb{font-size:9px;font-weight:600;border-radius:3px;padding:2px 5px}
+.ca{color:var(--tm);font-size:9.5px;margin-left:auto;transition:transform .2s}
+.ca.op{transform:rotate(180deg)}
+.cpb{height:2.5px;background:var(--bd);border-radius:2px;margin-top:4px;overflow:hidden}
+.cpf{height:100%;width:0%;border-radius:2px;transition:width .3s}
+.sub{margin-left:7px;margin-bottom:7px}
+.sh{display:flex;align-items:center;gap:6px;padding:5px 0;cursor:pointer;user-select:none}
+.sl{width:2px;height:13px;border-radius:1px;margin-left:3px;flex-shrink:0}
+.sn{font-size:11px;font-weight:700}
+.scc{font-size:9px;color:var(--tm)}
+.stg{color:#475569;font-size:9px;margin-left:auto}
+
+/* QUESTION */
+.qc{margin-left:16px;margin-bottom:3px;background:var(--bg-c);border:1px solid var(--bd);border-radius:7px;overflow:hidden;transition:background .2s,border-color .2s}
+.qc.on{background:var(--bg-co)}
+.qr{display:flex;align-items:flex-start;gap:7px;padding:8px 9px;cursor:pointer}
+.chk{width:17px;height:17px;min-width:17px;border-radius:4px;border:2px solid #334155;background:transparent;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .2s;flex-shrink:0}
+.chk .cm{color:#fff;font-size:10px;font-weight:700;opacity:0;transition:opacity .15s}
+.qc.on .chk .cm{opacity:1}
+.qtw{flex:1;min-width:0}
+.qnm{font-size:9px;font-weight:700;opacity:.7;margin-right:4px}
+.qt{font-size:12px;color:var(--t);line-height:1.5;transition:color .2s}
+.qc.on .qt{color:var(--ts);text-decoration:line-through}
+.wb{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:3px;font-size:8px;font-weight:800;color:#fff;flex-shrink:0;margin-top:1px}
+.bn{background:none;border:1px solid #334155;border-radius:3px;color:var(--tm);font-size:9px;padding:2px 5px;cursor:pointer;white-space:nowrap;margin-top:1px;font-family:inherit;transition:border-color .2s,color .2s}
+.bn:hover{border-color:#60a5fa;color:#60a5fa}
+.np{background:var(--bg-n);border-top:1px solid var(--bd);padding:6px 9px 7px 35px;display:none}
+.np.op{display:block}
+.npi{font-size:10.5px;color:var(--tm);line-height:1.55;display:flex;gap:5px}
+
+/* DASHBOARD */
+.dsh{max-width:840px;margin:0 auto;padding:8px 24px 6px}
+.dh{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-top:18px;border-top:1px solid var(--bd)}
+.dh h2{font-size:15px;font-weight:700;color:#fff}
+.ds2{font-size:9.5px;color:var(--tm);margin-left:auto}
+.sr{display:flex;gap:14px;flex-wrap:wrap}
+
+/* GAUGE */
+.sm{background:var(--bg-c);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;flex:0 0 auto;display:flex;align-items:center;gap:14px;min-width:185px}
+.sg{position:relative;width:56px;height:56px;flex-shrink:0}
+.sg svg{display:block}
+.sv{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.svn{font-size:18px;font-weight:800;color:#fff;line-height:1}
+.svp{font-size:8.5px;color:var(--tm)}
+.silv{font-size:13px;font-weight:700;margin-bottom:2px}
+.sid{font-size:10px;color:var(--tm);line-height:1.45}
+
+/* CAT BARS */
+.cbs{flex:1;min-width:200px;display:flex;flex-direction:column;gap:7px}
+.cbr{display:flex;align-items:center;gap:7px}
+.cbn{font-size:10px;font-weight:600;color:var(--ts);width:56px;flex-shrink:0;text-align:right}
+.cbt{flex:1;height:19px;background:#1a2d4a;border-radius:4px;overflow:hidden;position:relative}
+.cbf{height:100%;border-radius:4px;transition:width .4s;display:flex;align-items:center;padding-left:6px}
+.cbp{font-size:9px;font-weight:700;color:#fff;white-space:nowrap}
+.cbl{font-size:9.5px;font-weight:700;white-space:nowrap;width:34px}
+
+/* PRIORITY */
+.psec{margin-top:12px}
+.ph{font-size:11px;font-weight:700;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.pl{display:flex;flex-direction:column;gap:3px}
+.pii{display:flex;align-items:center;gap:7px;background:var(--bg-c);border:1px solid var(--bd);border-radius:6px;padding:6px 9px}
+.pirk{font-size:10px;font-weight:800;color:var(--tm);width:16px;text-align:center;flex-shrink:0}
+.piinf{flex:1;min-width:0}
+.picat{font-size:9px;color:var(--tm);margin-bottom:1px}
+.pitxt{font-size:10.5px;color:var(--t);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.piw{font-size:8.5px;font-weight:700;color:#fff;border-radius:3px;padding:1px 4px;flex-shrink:0}
+.pe{font-size:10.5px;color:#22c55e;padding:8px;text-align:center}
+
+/* SOLUTIONS */
+.ssec{margin-top:12px}
+.sgg{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px}
+.scc2{background:var(--bg-c);border:1px solid var(--bd);border-radius:7px;padding:10px 11px;display:flex;align-items:flex-start;gap:7px}
+.sci{font-size:16px;flex-shrink:0}
+.scif{flex:1;min-width:0}
+.scn{font-size:10.5px;font-weight:700;color:#fff;margin-bottom:2px}
+.scd{font-size:9px;color:var(--tm);line-height:1.45}
+.scst{font-size:8px;font-weight:700;margin-top:4px;display:flex;gap:5px;flex-wrap:wrap}
+.se{font-size:10.5px;color:#22c55e;padding:8px;text-align:center;grid-column:1/-1}
+
+/* SCRIPT */
+.ssec2{max-width:840px;margin:0 auto;padding:0 24px 44px}
+.sch{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-top:18px;border-top:1px solid var(--bd)}
+.sch h2{font-size:15px;font-weight:700;color:#fff;flex:1}
+.ba{display:flex;gap:6px;align-items:center}
+.bg{background:#2563eb;color:#fff;border:none;border-radius:6px;padding:7px 15px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;display:flex;align-items:center;gap:5px}
+.bg:hover{background:#1d4ed8}
+.bc{background:none;color:#60a5fa;border:1px solid #60a5fa;border-radius:5px;padding:5px 9px;font-size:9.5px;font-weight:600;cursor:pointer;font-family:inherit;display:none}
+.bc:hover{background:rgba(96,164,250,.12)}
+.bc.sh{display:inline-flex}
+
+/* SCRIPT PANEL */
+.sp{background:#1a2736;border:1px solid #2a4a6b;border-top:2px solid #ca8a04;border-radius:10px;padding:20px 24px;display:none;margin-top:8px}
+.sp.sh{display:block}
+.sph{border-bottom:1px solid #2a4a6b;padding-bottom:12px;margin-bottom:16px;text-align:center}
+.spti{font-size:14px;font-weight:800;color:#fff;letter-spacing:.4px}
+.spsti{font-size:9.5px;color:#ca8a04;font-weight:600;letter-spacing:1px;margin-top:2px}
+.spm{display:grid;grid-template-columns:1fr 1fr;gap:3px 16px;margin-top:10px}
+.spmi{font-size:10px;color:var(--tm)}.spmi strong{color:#fff;font-weight:600}
+.spdv{height:1px;background:#2a4a6b;margin:12px 0}
+.spst{font-size:10.5px;font-weight:700;color:#ca8a04;letter-spacing:.4px;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.spst::after{content:'';flex:1;height:1px;background:#2a4a6b}
+.spint{background:#151f30;border-radius:7px;padding:13px 15px;font-size:11.5px;color:var(--t);line-height:1.9;border-left:3px solid #60a5fa}
+.sprb{margin-bottom:12px}
+.sprtl{font-size:10.5px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.rtb{font-size:8px;font-weight:700;border-radius:3px;padding:1px 5px;color:#fff}
+.spri{background:#151f30;border-radius:5px;padding:7px 10px;margin-bottom:3px;border-left:2px solid}
+.riq{font-size:9.5px;color:var(--ts);margin-bottom:1px}
+.rit{font-size:10px;color:var(--t);line-height:1.55}
+.spsg{display:flex;flex-direction:column;gap:5px}
+.spsi{display:flex;gap:7px;align-items:flex-start}
+.sitg{font-size:8px;font-weight:700;border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;color:#fff}
+.sitx{font-size:10.5px;color:var(--t);line-height:1.7}
+.spcl{background:#151f30;border-radius:7px;padding:13px 15px;font-size:11px;color:var(--t);line-height:1.85;border-left:3px solid #22c55e;margin-top:6px}
+
+@media(max-width:560px){.ci-g{grid-template-columns:1fr}.sr{flex-direction:column}.sgg{grid-template-columns:1fr}.hdr h1{font-size:20px}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="o1"></div><div class="o2"></div>
+  <div class="hi">
+    <div class="lv"><div class="ld"></div><span>삼성생명 GFC · 법인 리스크 사전 진단표</span></div>
+    <h1>Kⁱ⁰⁷ 종합 기업 재무 컨설팅<br><span class="hl">AI 진단 및 스크립트 자동 생성</span></h1>
+    <p class="ds">문항별 가중치(1~5)를 반영한 정량 평가 엔진과 분석 로직을 통해 법인 리스크를 진단하고, GFC 상담용 스크립트를 자동 생성합니다.</p>
+  </div>
+</header>
+
+<div class="ci-p">
+  <div class="ci-h" onclick="tCI()">
+    <span>🏢 기업 정보 입력</span>
+    <span class="ci-tg op" id="ciTg">▼</span>
+  </div>
+  <div class="ci-b op" id="ciB">
+    <div class="ci-g">
+      <div class="ci-f"><label>기업명</label><input type="text" id="iCo" placeholder="예: ○○(주)" oninput="upAll()"></div>
+      <div class="ci-f"><label>업종</label><input type="text" id="iIn" placeholder="예: 제조업" oninput="upAll()"></div>
+      <div class="ci-f"><label>종업원 수</label><input type="number" id="iEm" placeholder="명" oninput="upAll()"></div>
+      <div class="ci-f"><label>대표자명</label><input type="text" id="iCe" placeholder="예: 김○○" oninput="upAll()"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sb">
+  <div class="sbi">
+    <div class="pr">
+      <div class="rw">
+        <svg width="36" height="36"><circle cx="18" cy="18" r="14" fill="none" stroke="#1e3a5f" stroke-width="4" transform="rotate(-90 18 18)"></circle>
+        <circle id="rC" cx="18" cy="18" r="14" fill="none" stroke="#60a5fa" stroke-width="4" stroke-dasharray="87.96" stroke-dashoffset="87.96" stroke-linecap="round" transform="rotate(-90 18 18)" style="transition:stroke-dashoffset .35s"></circle></svg>
+        <div><div class="rt"><span id="sD">0</span>/<span id="sT">44</span> 완료</div><div class="rp"><span id="sP">0</span>% 충족</div></div>
+      </div>
+      <div class="po"><div class="pi" id="pB"></div></div>
+      <button class="br" onclick="resetAll()">↺ 초기화</button>
+    </div>
+    <div class="fr" id="fR"></div>
+    <div class="wlg">
+      <div class="wli"><div class="wld" style="background:#dc2626"></div><span class="wll">5 임계</span></div>
+      <div class="wli"><div class="wld" style="background:#ea580c"></div><span class="wll">4 높음</span></div>
+      <div class="wli"><div class="wld" style="background:#ca8a04"></div><span class="wll">3 중간</span></div>
+      <div class="wli"><div class="wld" style="background:#3b82f6"></div><span class="wll">2 낮음</span></div>
+      <div class="wli"><div class="wld" style="background:#64748b"></div><span class="wll">1 최소</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="main" id="cL"></div>
+<div class="dsh" id="dB"></div>
+
+<div class="ssec2">
+  <div class="sch">
+    <span style="font-size:17px">📝</span>
+    <h2>GFC 상담 스크립트</h2>
+    <div class="ba">
+      <button class="bc" id="bCp" onclick="cpScript()">📋 복사</button>
+      <button class="bg" onclick="genScript()">✦ 스크립트 생성</button>
+    </div>
+  </div>
+  <div class="sp" id="sP"></div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+// SOLUTIONS MAP
+// ════════════════════════════════════════════════════════
+const SOL=[
+  {n:"기업재해보장 Plan",i:"🛡️",c:"#dc2626"},
+  {n:"종업원 단체보험",i:"👨‍👩‍👧‍👦",c:"#ea580c"},
+  {n:"CEO Plan",i:"👔",c:"#9333ea"},
+  {n:"퇴직연금 Plan",i:"📊",c:"#0891b2"},
+  {n:"가업승계 컨설팅",i:"🏢",c:"#ca8a04"},
+  {n:"법인 절세 컨설팅",i:"📋",c:"#16a34a"},
+  {n:"종합 재무컨설팅",i:"📈",c:"#2563eb"}
+];
+
+// ════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════
+const D=[
+{id:"legal",label:"법적 리스크",icon:"⚖️",acc:"#dc2626",ib:"rgba(220,38,38,.15)",ch:[
+  {id:"md",label:"중대재해",qs:[
+    {id:"q1", t:"귀사의 사업장 종업원 수가 몇 명인가요?", n:"50인 기준으로 중대재해처벌법 적용 여부가 달라집니다."},
+    {id:"q2", t:"중대재해처벌법 시행 이후 안전·보건 관리체계가 구축되어 있는가요?", n:"관리체계 미구축 시 위반 과징금 및 형사 책임 발생 가능"},
+    {id:"q3", t:"과거 중대재해 발생 사례가 있으신가요?", n:"과거 사례 여부는 현재 리스크 평가 및 보험료에 영향을 줍니다."},
+    {id:"q4", t:"현재 종업원 단체보험이 가입되어 있는가요?", n:"단체보험 미가입 시 재해 발생 시 전액 사업주 부담"},
+    {id:"q5", t:"산업안전보험의 보장 범위가 실제 손해를 커버하는지 확인하셨나요?", n:"국가 산재보험만으로는 실질적 손해 보전 불가"}
+  ]},
+  {id:"ia",label:"산업재해",qs:[
+    {id:"q6", t:"귀사의 업종에서 자주 발생하는 재해 유형을 파악하고 있는가요?", n:"업종별 주요 재해 유형에 맞는 보장 구조가 필요합니다."},
+    {id:"q7", t:"산재보험 외부 초과 보장 보험을 가입하고 있는가요?", n:"산재보험 한도를 초과하는 손해는 별도 보험으로 대비해야 합니다."},
+    {id:"q8", t:"근로자 및 유가족에 대한 손해배상 책임 대비 체계가 있는가요?", n:"유가족의 손해배상 청구 시 사업주의 직접 책임이 발생합니다."}
+  ]},
+  {id:"cc",label:"대표자 형사 책임",qs:[
+    {id:"q9", t:"중대재해 발생 시 대표자의 형사 책임(징역·벌금)에 대해 인식하고 계신가요?", n:"1년 이상의 징역 또는 10억원 이하의 벌금이 선고 가능합니다."},
+    {id:"q10", t:"대표자 형사책임보험(D&O 보험) 등이 가입되어 있는가요?", n:"D&O 보험은 임원의 소송·벌금 등 법적 비용 보장 역할"},
+    {id:"q11", t:"사업장 내 안전관리자 등 전문 인력이 배정되어 있는가요?", n:"안전관리자 배정 여부는 사업주의 책임 이행 판단 기준입니다."}
+  ]}
+]},
+{id:"fin",label:"재무 리스크",icon:"💰",acc:"#ca8a04",ib:"rgba(202,138,4,.15)",ch:[
+  {id:"cf",label:"현금흐름",qs:[
+    {id:"q12", t:"현재 기업의 월별·분기별 현금흐름 관리 체계가 있는가요?", n:"체계적인 현금흐름 관리는 기업 안정의 핵심입니다."},
+    {id:"q13", t:"단기 차입 및 장기 대출 구조가 안정적인가요?", n:"과도한 단기차입은 기업 유동성 위기의 주요 원인입니다."},
+    {id:"q14", t:"비상 자금 준비가 되어 있는가요? (최소 3개월 운영비 수준)", n:"비상준비금 부족 시 외부 충격에 대한 대응 능력이 약해집니다."},
+    {id:"q15", t:"정책자금 활용 가능 여부를 확인하셨나요?", n:"중소기업 정책자금은 저금리·장기 자금 조달의 효과적 수단입니다."}
+  ]},
+  {id:"tx",label:"세금 구조",qs:[
+    {id:"q16", t:"현재 법인세 납부 규모가 매출의 몇 퍼센트 수준인가요?", n:"세금 부담율 파악이 절세 전략의 출발점입니다."},
+    {id:"q17", t:"세금 절감을 위한 체계적인 전략이 있는가요?", n:"적법한 절세 구조화는 기업 재무 효율성을 크게 높일 수 있습니다."},
+    {id:"q18", t:"법인 비용 처리와 개인 소득 간의 구분이 적절히 되어 있는가요?", n:"불명확한 구분은 세무조사 및 추가 납부의 원인이 될 수 있습니다."},
+    {id:"q19", t:"부가가치세·소득세 등 세종별 납세 규모를 파악하고 있는가요?", n:"세종별 납세 현황 파악 없이는 체계적 절세가 어렵습니다."}
+  ]},
+  {id:"inh",label:"상속/증여",qs:[
+    {id:"q20", t:"현재 기업의 주식 구성과 지배구조를 명확히 파악하고 있는가요?", n:"주식 구성은 상속·증여 세금 계산의 기초 자료입니다."},
+    {id:"q21", t:"사전 증여 또는 상속을 검토하고 계신가요?", n:"사전 증여는 적절한 시점과 구조 설계가 필수입니다."},
+    {id:"q22", t:"상속세 납부 능력을 고려한 자산 유동성 계획이 있는가요?", n:"상속세 납부 재원 부족은 기업 경영 위기의 원인이 될 수 있습니다."},
+    {id:"q23", t:"주식의 평가 가치와 세금 부담 규모를 추정하셨나요?", n:"한국 최고 상속세율 50%는 주요 선진국보다 높은 수준입니다."}
+  ]}
+]},
+{id:"hum",label:"인적 리스크",icon:"👥",acc:"#16a34a",ib:"rgba(22,163,74,.15)",ch:[
+  {id:"kp",label:"핵심 인력",qs:[
+    {id:"q24", t:"귀사에서 대체 불가능한 핵심 인력이 있는가요?", n:"핵심 인력의 부재는 기업 경영 연속성에 직접 영향을 줍니다."},
+    {id:"q25", t:"핵심 인력의 이직·사망 시 기업 경영에 미치는 영향을 평가하셨나요?", n:"영향 평가 없이는 적절한 보장 수준을 설계할 수 없습니다."},
+    {id:"q26", t:"핵심인력보험(Key Man 보험) 등을 가입하고 있는가요?", n:"Key Man 보험은 핵심 인력 손실 시 기업 경영 유지의 안전망입니다."}
+  ]},
+  {id:"ag",label:"고령화",qs:[
+    {id:"q27", t:"귀사 종업원의 평균 연령대 현황을 파악하고 있는가요?", n:"고령화 추세는 인적 리스크와 퇴직 계획에 직접 영향을 줍니다."},
+    {id:"q28", t:"고령 종업원의 건강·복리 관련 보장이 적절히 되어 있는가요?", n:"고령 종업원의 건강 리스크는 기업 운영 비용과 생산성에 영향합니다."},
+    {id:"q29", t:"종업원의 건강보험·생명보험 등 단체보험 가입 현황은 어떤가요?", n:"단체보험 미가입 시 개별 종업원의 리스크가 기업 리스크로 전가됩니다."}
+  ]},
+  {id:"rt",label:"퇴직 구조",qs:[
+    {id:"q30", t:"귀사에 퇴직연금 제도가 도입되어 있는가요? (확정급付/확정기여)", n:"퇴직연금 제도는 종업원 보호와 기업 재무 안정의 핵심 장치입니다."},
+    {id:"q31", t:"퇴직금 적립 충당이 적정 수준인가요?", n:"퇴직금 충당 부족은 기업 재무제표와 실제 부담 간 괴리를 발생시킵니다."},
+    {id:"q32", t:"임원 퇴직급여 체계가 규정과 세법에 부합하는가요?", n:"임원 퇴직급여의 세법 적합성은 세무조사의 주요 대상입니다."},
+    {id:"q33", t:"퇴직 후 종업원의 연금 수령 체계가 원활하게 운영되는가요?", n:"퇴직후 연금 수령 체계의 원활한 운영은 종업원 신뢰의 기초입니다."}
+  ]}
+]},
+{id:"sus",label:"지속가능성",icon:"🌱",acc:"#2563eb",ib:"rgba(37,99,235,.15)",ch:[
+  {id:"sc",label:"승계",qs:[
+    {id:"q34", t:"귀사의 가업 승계 후보자를 정해두고 계신가요?", n:"승계 후보자 결정은 가업 승계 계획의 최초·최중요 단계입니다."},
+    {id:"q35", t:"승계 후보자에 대한 교육·경험 축적 계획이 있는가요?", n:"적절한 준비 없이는 원활한 경영권 이전이 어렵습니다."},
+    {id:"q36", t:"가업 상속 공제 등 세법 혜택 활용 가능 여부를 검토하셨나요?", n:"가업상속공제 조건 충족 시 상속세 부담을 크게 줄일 수 있습니다."},
+    {id:"q37", t:"주식 이전에 따라 발생할 증여세·상속세 규모를 사전 추정하셨나요?", n:"사전 추정 없이는 적절한 재원 준비와 구조 설계가 불가합니다."}
+  ]},
+  {id:"os",label:"조직 안정성",qs:[
+    {id:"q38", t:"현재 경영진·임원 구성이 안정적인가요?", n:"경영진의 잦은 교체는 조직 안정성과 외부 신뢰에 부정적 영향을 줍니다."},
+    {id:"q39", t:"핵심 경영진의 건강·사망 리스크에 대한 보장 체계가 있는가요?", n:"경영진 리스크 보장 부족은 기업 경영 연속성의 가장 큰 위협입니다."},
+    {id:"q40", t:"경영권 분쟁 방지를 위한 정관 및 주주 합의가 되어 있는가요?", n:"경영권 분쟁은 기업 존립 자체를 위협하는 심각한 리스크입니다."}
+  ]},
+  {id:"lt",label:"장기 전략",qs:[
+    {id:"q41", t:"귀사의 5년·10년 장기 경영 전략과 자산 운영 계획이 있는가요?", n:"장기 전략 수립은 기업의 방향성과 가치 창조의 기본 조건입니다."},
+    {id:"q42", t:"기업 자산과 개인 자산의 분리가 체계적으로 되어 있는가요?", n:"자산 혼용은 세금, 상속, 경영권 등 다중 리스크의 근본 원인입니다."},
+    {id:"q43", t:"기업의 영속적 성장을 위한 종합 재무 컨설팅을 받고 계신가요?", n:"종합 재무컨설팅은 개별 리스크 대응이 아닌 전체적 최적화를 목표로 합니다."},
+    {id:"q44", t:"부동산·금융투자 등 다양한 자산 분산 전략을 검토하셨나요?", n:"자산 집중은 외부 충격 시 기업·개인 양방향 손해를 야기할 수 있습니다."}
+  ]}
+]}
+];
+
+// ════════════════════════════════════════════════════════
+// META: w=가중치(1-5), s=솔루션INDEX, m=상담멘트
+// ════════════════════════════════════════════════════════
+const M={
+q1:{w:3,s:0,m:"귀사의 종업원 규모 파악이 필요하며, 이에 따라 중대재해처벌법 적용 여부와 필요한 보장 구조가 달라집니다."},
+q2:{w:5,s:0,m:"안전·보건 관리체계 미구축 시, 재해 발생에서 법적 책임이 크게 가중됩니다. 체계 구축과 동시에 보장 장치가 필요합니다."},
+q3:{w:3,s:0,m:"과거 재해 사례는 현재 리스크 평가와 보험료 산정에 직접 영향합니다. 구체적 내용 파악이 필요합니다."},
+q4:{w:5,s:1,m:"단체보험 미가입 시, 재해 발생에서 전액을 사업주가 부담합니다. 즉각적인 가입 검토가 필요합니다."},
+q5:{w:4,s:1,m:"현재 보장 범위가 실제 손해를 충분히 커버하지 못하면 보험의 실효성이 저하됩니다. 보장 범위 재검토가 필요합니다."},
+q6:{w:3,s:1,m:"업종별 주요 재해 유형 파악 없이는 적절한 보장 구조를 설계하기 어렵습니다."},
+q7:{w:4,s:1,m:"산재보험 초과분은 사업주 부담됩니다. 초과보장 보험 추가로 완전한 대비가 가능합니다."},
+q8:{w:4,s:1,m:"유가족의 손해배상 청구 시 사업주의 직접 책임이 발생합니다. 손해배상 대비 체계를 구축해야 합니다."},
+q9:{w:3,s:2,m:"형사 책임의 구체적 내용(징역·벌금)을 인식하고, 대비 방법을 즉각 검토해야 합니다."},
+q10:{w:5,s:2,m:"D&O 보험 미가입 시, 임원의 법적 분쟁과 벌금에 대한 보호 장치가 전혀 없습니다."},
+q11:{w:4,s:0,m:"안전관리자 미배정은 사업주의 안전 의무 불이행으로 판단될 수 있어 법적 책임이 가중됩니다."},
+q12:{w:3,s:6,m:"현금흐름 관리 체계 부재 시, 자금 조달과 비용 통제가 불체계적으로 이루어질 수 있습니다."},
+q13:{w:4,s:6,m:"단기 차입 불안정은 기업 유동성 위기의 주요 원인입니다. 장기 구조로 전환 검토가 필요합니다."},
+q14:{w:3,s:6,m:"비상 자금 부족 시, 외부 충격에 즉각적으로 대응하기 어렵습니다. 최소 3개월 운영비 수준 준비 권장."},
+q15:{w:2,s:6,m:"정책자금은 저금리·장기 조건으로 효과적인 자금 조달 수단입니다. 활용 가능 여부 확인 권장."},
+q16:{w:3,s:5,m:"법인세 납부 규모 파악이 절세 전략의 출발점입니다. 먼저 현황을 정리해야 합니다."},
+q17:{w:4,s:5,m:"체계적인 절세 전략 부재 시, 불필요한 세금 부담이 발생할 수 있습니다."},
+q18:{w:4,s:5,m:"법인/개인 비용 구분 불명확은 세무조사 시 추가 납부의 원인이 됩니다. 즉각 수립해야 합니다."},
+q19:{w:3,s:5,m:"세종별 납세 현황 파악 없이는 각 세종별 절세 기회를 놓칠 수 있습니다."},
+q20:{w:4,s:4,m:"주식 구성 파악이 상속·증여 세금 계산의 기초 자료입니다. 먼저 정리해야 합니다."},
+q21:{w:5,s:4,m:"사전 검토 없이는, 급작스러운 경영권 이전 시 세금 부담이 매우 크게 발생합니다."},
+q22:{w:5,s:4,m:"상속세 납부 재원 부족은 기업 경영 위기의 원인이 될 수 있습니다. 자산 유동성 계획이 필수입니다."},
+q23:{w:4,s:4,m:"세금 부담 규모 추정 없이는 승계 계획의 실행 가능성을 평가하기 어렵습니다."},
+q24:{w:3,s:2,m:"핵심 인력의 부재는 기업 경영 연속성에 직접 영향합니다. 명확한 파악이 보장의 출발점입니다."},
+q25:{w:4,s:2,m:"영향 평가 없이는 적절한 보장 수준을 설계하기 어렵습니다. 먼저 영향 분석이 필요합니다."},
+q26:{w:5,s:2,m:"핵심인력 미보장 시, 핵심 인력의 부적격에서 기업 경영 연속성이 즉각 위험됩니다."},
+q27:{w:2,s:1,m:"종업원 연령대 파악이 고령화 리스크 대비의 기본 조건입니다."},
+q28:{w:4,s:1,m:"고령 종업원 보장 부족은 건강 문제로 인한 생산성 저하와 비용 증가를 야기할 수 있습니다."},
+q29:{w:4,s:1,m:"단체보험 미가입 시, 종업원 리스크가 곧바로 기업 리스크로 전가됩니다."},
+q30:{w:5,s:3,m:"퇴직연금 미도입 시, 퇴직금 전액이 사업주 부담되어 기업 재무에 큰 충격을 줄 수 있습니다."},
+q31:{w:4,s:3,m:"퇴직금 충당 부족은 지급 시 재무 괴리를 발생시킵니다. 즉각 보완이 필요합니다."},
+q32:{w:4,s:3,m:"임원 퇴직급여의 세법 불합치는 세무조사에서 추가 납부와 과징금의 원인이 됩니다."},
+q33:{w:3,s:3,m:"연금 수령 체계 불원활은 종업원 신뢰와 만족도를 저하시킵니다."},
+q34:{w:5,s:4,m:"승계 후보자 미결정은 가업 승계 계획의 출발점이 불명확합니다. 즉각 결정이 필요합니다."},
+q35:{w:4,s:4,m:"후계자 교육·경험 축적 계획 부재 시, 경영권 이전 후 연속성이 보장되지 않습니다."},
+q36:{w:5,s:4,m:"가업상속공제 조건 충족 시, 상속세 부담을 크게 줄일 수 있습니다. 조건 평가가 필수입니다."},
+q37:{w:4,s:4,m:"세금 규모 사전 추정 없이는 재원 준비와 구조 설계가 불가합니다."},
+q38:{w:3,s:2,m:"경영진 불안정은 외부 신뢰 저하와 정상 운영 방해를 야기할 수 있습니다."},
+q39:{w:4,s:2,m:"경영진 리스크 보장 부족은 경영 연속성의 가장 큰 위협입니다. CEO Plan 검토 필요."},
+q40:{w:4,s:6,m:"경영권 분쟁 방지 체계 부재 시, 주주 간 분쟁에서 기업 존립이 위험됩니다."},
+q41:{w:3,s:6,m:"장기 전략 부재 시, 기업의 방향성과 장기적 가치 창조가 불명확합니다."},
+q42:{w:4,s:5,m:"기업·개인 자산 혼용은 세금, 상속, 경영권 등 다중 리스크의 근본 원인입니다."},
+q43:{w:3,s:6,m:"종합 재무컨설팅 부재 시, 개별 리스크 대응만 이루어져 전체적 최적화가 어렵습니다."},
+q44:{w:3,s:6,m:"자산 집중은 외부 충격 시 기업·개인 양방향 손해를 야기할 수 있습니다."}
+};
+
+// ════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════
+const S={chk:{},exp:{},nop:{},fil:"all"};
+D.forEach(c=>{S.exp[c.id]=true;c.ch.forEach(ch=>S.exp[ch.id]=true)});
+
+// ════════════════════════════════════════════════════════
+// SCORING ENGINE
+// ════════════════════════════════════════════════════════
+function rl(p){if(p>=80)return{l:"양호",c:"#22c55e"};if(p>=60)return{l:"주의",c:"#ca8a04"};if(p>=40)return{l:"경계",c:"#ea580c"};return{l:"위험",c:"#dc2626"}}
+function wc(w){return["","#64748b","#3b82f6","#ca8a04","#ea580c","#dc2626"][w]}
+function cCS(id){const c=D.find(x=>x.id===id);let wt=0,wd=0,n=0,d=0;c.ch.forEach(ch=>ch.qs.forEach(q=>{const m=M[q.id];wt+=m.w;n++;if(S.chk[q.id]){wd+=m.w;d++}}));return{n,d,wt,wd,p:wt?Math.round(wd/wt*100):0}}
+function cAll(){let wt=0,wd=0,n=0,d=0;D.forEach(c=>c.ch.forEach(ch=>ch.qs.forEach(q=>{const m=M[q.id];wt+=m.w;n++;if(S.chk[q.id]){wd+=m.w;d++}})));return{n,d,wt,wd,p:wt?Math.round(wd/wt*100):0}}
+function gPri(lim){const a=[];D.forEach(c=>c.ch.forEach(ch=>ch.qs.forEach(q=>{if(!S.chk[q.id])a.push({id:q.id,t:q.t,cl:c.label,sl:ch.label,w:M[q.id].w})})));a.sort((x,y)=>y.w-x.w);return a.slice(0,lim)}
+function gSol(){const mp={};D.forEach(c=>c.ch.forEach(ch=>ch.qs.forEach(q=>{if(!S.chk[q.id]){const m=M[q.id];if(!mp[m.s])mp[m.s]={si:m.s,items:[],ws:0};mp[m.s].items.push({id:q.id,t:q.t,w:m.w});mp[m.s].ws+=m.w}})));return Object.values(mp).sort((a,b)=>b.ws-a.ws)}
+function fCat(qid){return D.find(c=>c.ch.some(ch=>ch.qs.some(q=>q.id===qid)))}
+function fSub(qid){for(const c of D)for(const ch of c.ch)if(ch.qs.some(q=>q.id===qid))return ch;return null}
+
+// ════════════════════════════════════════════════════════
+// RENDER: STATS
+// ════════════════════════════════════════════════════════
+function upStats(){const o=cAll();document.getElementById("sD").textContent=o.d;document.getElementById("sT").textContent=o.n;document.getElementById("sP").textContent=o.p;document.getElementById("pB").style.width=o.p+"%";const ci=2*Math.PI*14;document.getElementById("rC").setAttribute("stroke-dashoffset",ci-(o.p/100)*ci)}
+
+// ════════════════════════════════════════════════════════
+// RENDER: FILTERS
+// ════════════════════════════════════════════════════════
+function rnF(){let h="";D.forEach(c=>{const s=cCS(c.id);const a=S.fil===c.id;h+=`<div class="fp" style="background:${a?c.acc+"22":"#1a2d4a"};border-color:${a?c.acc:"#1e3a5f"}" onclick="sF('${c.id}')"><span class="fi">${c.icon}</span><span class="fl" style="color:${a?c.acc:"#94a3b8"}">${c.label}</span><span class="fc ${s.d===s.n?"dn":""}">${s.d}/${s.n}</span></div>`});h+=`<div class="fp" style="background:${S.fil==="all"?"#2563eb22":"#1a2d4a"};border-color:${S.fil==="all"?"#2563eb":"#1e3a5f"}" onclick="sF('all')"><span class="fl" style="color:${S.fil==="all"?"#60a5fa":"#94a3b8"}">전체</span></div>`;document.getElementById("fR").innerHTML=h}
+
+// ════════════════════════════════════════════════════════
+// RENDER: CHECKLIST
+// ════════════════════════════════════════════════════════
+function rnCL(){const fd=S.fil==="all"?D:D.filter(c=>c.id===S.fil);let h="";fd.forEach(c=>{const cs=cCS(c.id);h+=`<div class="cat"><div class="ch" onclick="tE('${c.id}')"><div class="cico" style="background:${c.ib};border:1px solid ${c.acc}33">${c.icon}</div><div class="ct"><div class="ctr"><span class="cn">${c.label}</span><span class="cbb" style="background:${c.acc}33;color:${c.acc}">${cs.d}/${cs.n}</span><span class="ca ${S.exp[c.id]?"op":""}">▼</span></div><div class="cpb"><div class="cpf" style="width:${cs.p}%;background:${c.acc}"></div></div></div></div>`;
+if(S.exp[c.id]){c.ch.forEach(sub=>{let sd=0;sub.qs.forEach(q=>{if(S.chk[q.id])sd++});
+h+=`<div class="sub"><div class="sh" onclick="tE('${sub.id}')"><div class="sl" style="background:${c.acc}55"></div><span class="sn" style="color:${c.acc}">${sub.label}</span><span class="scc">(${sd}/${sub.qs.length})</span><span class="stg">${S.exp[sub.id]?"−":"+"}</span></div>`;
+if(S.exp[sub.id]){sub.qs.forEach((q,i)=>{const on=!!S.chk[q.id];const w=M[q.id].w;const no=!!S.nop[q.id];
+h+=`<div class="qc ${on?"on":""}" id="qc-${q.id}"><div class="qr" onclick="tC('${q.id}')"><div class="chk" style="border-color:${on?c.acc:"#334155"};background:${on?c.acc:"transparent"}"><span class="cm">✓</span></div><div class="qtw"><span class="qnm" style="color:${c.acc}">Q${i+1}</span><span class="qt">${q.t}</span></div><div class="wb" style="background:${wc(w)}">${w}</div><button class="bn" onclick="event.stopPropagation();tN('${q.id}')">${no?"접기":"참고"}</button></div><div class="np ${no?"op":""}" id="np-${q.id}"><div class="npi"><span style="color:${c.acc}">💡</span>${q.n}</div></div></div>`})}
+h+=`</div>`})}
+h+=`</div>`});document.getElementById("cL").innerHTML=h}
+
+// ════════════════════════════════════════════════════════
+// RENDER: DASHBOARD
+// ════════════════════════════════════════════════════════
+function rnDB(){const o=cAll();const lv=rl(o.p);const pri=gPri(5);const sol=gSol();
+let h=`<div class="dh"><span style="font-size:17px">📊</span><h2>AI 진단 결과</h2><span class="ds2">가중치 기반 정량 평가</span></div>`;
+// GAUGE + CAT BARS
+h+=`<div class="sr"><div class="sm"><div class="sg"><svg width="56" height="56"><circle cx="28" cy="28" r="22" fill="none" stroke="#1e3a5f" stroke-width="5" transform="rotate(-90 28 28)"></circle><circle cx="28" cy="28" r="22" fill="none" stroke="${lv.c}" stroke-width="5" stroke-dasharray="${2*Math.PI*22}" stroke-dashoffset="${2*Math.PI*22*(1-o.p/100)}" stroke-linecap="round" transform="rotate(-90 28 28)" style="transition:stroke-dashoffset .4s"></circle></svg><div class="sv"><span class="svn">${o.p}%</span><span class="svp">충족율</span></div></div><div><div class="silv" style="color:${lv.c}">${lv.l}</div><div class="sid">가중평균 충족율<br>${o.wd} / ${o.wt} pts</div></div></div>`;
+// CAT BARS
+h+=`<div class="cbs">`;
+D.forEach(c=>{const s=cCS(c.id);const cv=rl(s.p);h+=`<div class="cbr"><span class="cbn" style="color:${c.acc}">${c.label}</span><div class="cbt"><div class="cbf" style="width:${s.p}%;background:${cv.c}"><span class="cbp">${s.p}%</span></div></div><span class="cbl" style="color:${cv.c}">${cv.l}</span></div>`});
+h+=`</div></div>`;
+
+// PRIORITY
+h+=`<div class="psec"><div class="ph">🔥 우선 대응 항목 <span style="font-size:8.5px;color:var(--tm);font-weight:500">(미충족 중 가중치 높은 5건)</span></div><div class="pl">`;
+if(pri.length===0){h+=`<div class="pe">모든 항목 충족 완료 🎉</div>`}
+else{pri.forEach((p,i)=>{const cat=fCat(p.id);h+=`<div class="pii"><span class="pirk" style="color:${wc(p.w)}">#${i+1}</span><div class="piinf"><div class="picat">${cat?cat.label:""} › ${p.sl}</div><div class="pitxt">${p.t}</div></div><div class="piw" style="background:${wc(p.w)}">가중치 ${p.w}</div></div>`})}
+h+=`</div></div>`;
+
+// SOLUTIONS
+h+=`<div class="ssec"><div class="ph">💎 추천 솔루션 <span style="font-size:8.5px;color:var(--tm);font-weight:500">(미충족 항목별 대응 제품)</span></div><div class="sgg">`;
+if(sol.length===0){h+=`<div class="se">현재 추천 솔루션 없음 — 모든 항목 충족됨 🎉</div>`}
+else{sol.forEach(s=>{const sl=SOL[s.si];h+=`<div class="scc2"><span class="sci">${sl.i}</span><div class="scif"><div class="scn">${sl.n}</div><div class="scd">관련 미충족 ${s.items.length}건</div><div class="scst">${s.items.slice(0,3).map(it=>`<span style="background:${wc(it.w)};padding:1px 5px;border-radius:3px;color:#fff;font-size:7.5px">${it.w}</span>`).join("")}${s.items.length>3?`<span style="color:var(--tm)">+${s.items.length-3}</span>`:""}</div></div></div>`})}
+h+=`</div></div></div>`;
+document.getElementById("dB").innerHTML=h}
+
+// ════════════════════════════════════════════════════════
+// SCRIPT GENERATION
+// ════════════════════════════════════════════════════════
+function genScript(){
+  const o=cAll();const lv=rl(o.p);const pri=gPri(5);const sol=gSol();
+  const co=document.getElementById("iCo").value||"○○(주)";
+  const ind=document.getElementById("iIn").value||"업종 미입력";
+  const emp=document.getElementById("iEm").value||"?";
+  const ceo=document.getElementById("iCe").value||"대표자";
+
+  // GROUP unchecked by category for risk block
+  const catUnchecked={};
+  D.forEach(c=>{const arr=[];c.ch.forEach(ch=>ch.qs.forEach(q=>{if(!S.chk[q.id])arr.push({id:q.id,t:q.t,sl:ch.label,w:M[q.id].w,m:M[q.id].m})}));if(arr.length)catUnchecked[c.id]={label:c.label,acc:c.acc,icon:c.icon,items:arr.sort((a,b)=>b.w-a.w)}});
+
+  let h=`<div class="sp sh" id="sP">`;
+  // HEADER
+  h+=`<div class="sph"><div class="spti">GFC 상담 스크립트</div><div class="spsti">삼성생명 기업재무컨설팅 · 진단 기반 자동생성</div></div>`;
+  // META
+  h+=`<div class="spm"><div class="spmi"><strong>기업명:</strong> ${co}</div><div class="spmi"><strong>업종:</strong> ${ind}</div><div class="spmi"><strong>종업원 수:</strong> ${emp}명</div><div class="spmi"><strong>대표자:</strong> ${ceo}</div><div class="spmi"><strong>진단 충족율:</strong> <span style="color:${lv.c};font-weight:700">${o.p}% (${lv.l})</span></div><div class="spmi"><strong>생성일:</strong> ${new Date().toLocaleDateString("ko-KR")}</div></div>`;
+
+  // INTRO
+  h+=`<div class="spdv"></div><div class="spst">1. 도입 인사</div>`;
+  h+=`<div class="spint">안녕하세요, ${ceo}님. 삼성생명 GFC 기업재무컨설팅 ${co.replace("(주)","").replace("(유)","").replace("㈜","")} 담당 컨설턴트입니다.<br><br>오늘 귀사의 법인 리스크 사전 진단을 완료했는데, 전체 <strong>${o.n}개 항목 중 ${o.d}건 충족(${o.p}%, ${lv.l})</strong> 결과가 나왔습니다.<br>특히 <strong>${pri.length>0?pri[0].sl:"주요 영역"}</strong> 부분에서 즉각적인 대비가 필요한 사항들이 도출되었습니다. 오늘 주요 내용을 briefing드리고, 귀사에 맞는 종합 컨설팅 제안까지 함께 검토하겠습니다.</div>`;
+
+  // RISK BLOCKS
+  if(Object.keys(catUnchecked).length>0){
+    h+=`<div class="spdv"></div><div class="spst">2. 리스크별 상세 상담</div>`;
+    Object.entries(catUnchecked).forEach(([cid,cat])=>{
+      h+=`<div class="sprb"><div class="sprtl"><span style="font-size:13px">${cat.icon}</span>${cat.label}<span class="rtb" style="background:${cat.acc}">${cat.items.length}건 미충족</span></div><div>`;
+      cat.items.forEach(it=>{
+        h+=`<div class="spri" style="border-color:${wc(it.w)}"><div class="riq">📌 진단 항목 (가중치 ${it.w}) — ${it.sl}</div><div class="rit"><strong>질문:</strong> ${it.t}<br><strong>상담 포인트:</strong> ${it.m}</div></div>`
+      });
+      h+=`</div></div>`
+    });
+  } else {
+    h+=`<div class="spdv"></div><div class="spst">2. 리스크별 상세 상담</div><div class="spri" style="border-color:#22c55e;background:#0d1f14"><div class="rit" style="color:#22c55e">모든 리스크 항목이 충족되었습니다. 유지 관리 차원의 정기 점검을 권장드립니다.</div></div>`
+  }
+
+  // SOLUTION
+  h+=`<div class="spdv"></div><div class="spst">3. 추천 솔루션 제안</div><div class="spsg">`;
+  if(sol.length===0){h+=`<div class="spri" style="border-color:#22c55e;background:#0d1f14"><div class="rit" style="color:#22c55e">현재 추천 솔루션 없음 — 모든 항목 충족됨 🎉</div></div>`}
+  else{sol.forEach(s=>{const sl=SOL[s.si];h+=`<div class="spsi"><span class="sitg" style="background:${sl.c}">${sl.i} ${sl.n}</span><span class="sitx">${sl.n} 도입을 통해, 관련 미충족 <strong>${s.items.length}건</strong>(가중치합 ${s.ws}pts)의 리스크를 체계적으로 대비할 수 있습니다. 귀사의 규모와 업종에 맞는 보장 구조를 설계하여 제안드리겠습니다.</span></div>`})}
+  h+=`</div>`;
+
+  // CLOSING
+  h+=`<div class="spdv"></div><div class="spst">4. 마무리 및 다음 단계</div>`;
+  h+=`<div class="spcl">오늘 진단 결과를 기반으로, 귀사에 맞는 <strong>종합 법인 재무 컨설팅 제안서</strong>를 별도로 작성하여 드리겠습니다.<br>세무사, 회계사, 법무사 등 전문가와 협업하여 <strong>가장 최적의 구조</strong>를 설계드리고, 삼성생명 GFC의 교육과 지원 체계와 함께 단계별 실행 계획까지 제안드리겠습니다.<br><br>다음 단계로 <strong>상세 제안서 검토 일정</strong>을 잡아드리면 되겠습니다. 언제 가능하신가요?</div>`;
+  h+=`</div>`;
+
+  document.getElementById("sP").outerHTML=h;
+  document.getElementById("bCp").classList.add("sh");
+}
+
+// ════════════════════════════════════════════════════════
+// COPY SCRIPT
+// ════════════════════════════════════════════════════════
+function cpScript(){
+  const el=document.getElementById("sP");
+  if(!el)return;
+  navigator.clipboard.writeText(el.innerText).then(()=>{
+    const b=document.getElementById("bCp");
+    b.textContent="✓ 복사됨";
+    setTimeout(()=>{b.textContent="📋 복사"},1200);
+  }).catch(()=>{
+    const r=document.createRange();r.selectNode(document.getElementById("sP"));
+    window.getSelection().removeAllRanges();window.getSelection().addRange(r);
+    document.execCommand("copy");
+    const b=document.getElementById("bCp");b.textContent="✓ 복사됨";
+    setTimeout(()=>{b.textContent="📋 복사"},1200);
+  });
+}
+
+// ════════════════════════════════════════════════════════
+// ACTIONS
+// ════════════════════════════════════════════════════════
+function tC(id){S.chk[id]=!S.chk[id];upAll()}
+function tE(id){S.exp[id]=!S.exp[id];rnCL()}
+function tN(id){S.nop[id]=!S.nop[id];rnCL()}
+function sF(v){S.fil=v;rnCL();rnF()}
+function tCI(){const b=document.getElementById("ciB");const t=document.getElementById("ciTg");b.classList.toggle("op");t.classList.toggle("op")}
+function resetAll(){S.chk={};upAll()}
+function upAll(){upStats();rnF();rnCL();rnDB()}
+
+// ════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════
+upAll();
+</script>
+</body>
+</html>
