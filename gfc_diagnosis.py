@@ -1,5 +1,5 @@
 """
-삼성생명 GFC | 법인 리스크 사전 진단표
+Kⁱ⁰⁷ 삼성생명 GFC | 법인 리스크 사전 진단표
 Streamlit 기반 AI 진단 엔진 + KPI 대시보드
 
 설치 : pip install streamlit plotly numpy
@@ -431,7 +431,7 @@ def build_script(info, scores, priority_items, sol_list):
 # ═══════════════════════════════════════════════════════════
 def main():
     st.set_page_config(
-        page_title="삼성생명 GFC | 법인 리스크 사전 진단표",
+        page_title="Kⁱ⁰⁷ 삼성생명 GFC | 법인 리스크 사전 진단표",
         page_icon="⚖️",
         layout="centered",
         initial_sidebar_state="collapsed",
