@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>삼성생명 GFC 종합 분석</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+  :root {
+    --navy: #0a1628;
+    --deep-blue: #132144;
+    --samsung-blue: #1428a0;
+    --accent-gold: #c9a84c;
+    --accent-light: #e8c96d;
+    --text-primary: #1a2332;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --bg-light: #f4f6f9;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 50%, #1a3060 100%);
+    position: relative;
+    padding: 80px 0 70px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,168,76,0.12) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(20,40,160,0.25) 0%, transparent 70%);
+  }
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(196,168,76,0.12);
+    border: 1px solid rgba(196,168,76,0.3);
+    border-radius: 24px;
+    padding: 6px 16px;
+    margin-bottom: 24px;
+  }
+  .hero-badge span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    color: var(--accent-gold);
+    font-style: italic;
+  }
+  .hero .subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    max-width: 580px;
+  }
+
+  /* SOURCE TAGS ROW */
+  .source-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .source-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+  }
+  .source-tag .icon { font-size: 14px; }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+  .section-header:first-child { margin-top: 0; }
+  .section-num {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--samsung-blue);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.3px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 28px 30px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(10,22,40,0.04);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 24px rgba(10,22,40,0.08); }
+
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--samsung-blue);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 .tag {
+    font-size: 10px;
+    font-weight: 600;
+    background: #eef2ff;
+    color: var(--samsung-blue);
+    border-radius: 4px;
+    padding: 2px 7px;
+    letter-spacing: 0.5px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .card p + p { margin-top: 10px; }
+
+  /* INFO GRID */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .info-item {
+    background: var(--bg-light);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .info-item .label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .info-item .value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #eef2ff 0%, #e8ecff 100%);
+    border: 1px solid #c7d2fe;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .highlight-box .hl-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--samsung-blue);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .highlight-box p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* GOLD HIGHLIGHT */
+  .gold-box {
+    background: linear-gradient(135deg, #fdf8ec 0%, #faf0d8 100%);
+    border: 1px solid #e8c96d;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .gold-box .hl-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #9a7420;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .gold-box p {
+    font-size: 13.5px;
+    color: #6b5a2e;
+    line-height: 1.75;
+  }
+
+  /* PILL LIST */
+  .pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .pill {
+    background: #f0f4ff;
+    border: 1px solid #d6e0ff;
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--samsung-blue);
+  }
+
+  /* TWO-COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 36px 0;
+  }
+
+  /* NEWSPAPER SOURCE BOX */
+  .newspaper-box {
+    background: var(--bg-card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 22px 26px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .newspaper-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .ni-donga { background: #fef3e2; }
+  .ni-joongang { background: #eef2ff; }
+  .newspaper-box .nw-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .newspaper-box .nw-meta {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .newspaper-box .nw-summary {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .stat-card {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .stat-card .stat-val {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--samsung-blue);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  .stat-card .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin-top: 16px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--samsung-blue), var(--accent-gold));
+    border-radius: 1px;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 18px;
+  }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--samsung-blue);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--samsung-blue);
+  }
+  .tl-item .tl-time {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 0.8px;
+    margin-bottom: 2px;
+  }
+  .tl-item .tl-text {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--navy);
+    padding: 36px 0;
+    text-align: center;
+  }
+  .footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 28px; }
+    .info-grid, .two-col { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .main { padding: 32px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="dot"></div><span>종합 분석 보고서</span></div>
+    <h1>삼성생명 <em>GFC</em><br>기업재무컨설팅 사업</h1>
+    <p class="subtitle">채용 제안서·신문 기사 3건을 종합하여 정리한 상세 분석입니다.</p>
+    <div class="source-row">
+      <div class="source-tag"><span class="icon">📄</span> 채용 제안서 (삼성생명 테헤란법인지점)</div>
+      <div class="source-tag"><span class="icon">📰</span> 동아일보 2024.02.29</div>
+      <div class="source-tag"><span class="icon">📰</span> 중앙일보 2023.01.30</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- 1. 기업 개체 및 조직 구조 -->
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <h2>기업 주체 및 조직 구조</h2>
+  </div>
+
+  <div class="card">
+    <h3>삼성생명 GFC(기업재무컨설턴트) <span class="tag">조직 소속</span></h3>
+    <p>
+      GFC는 <strong>Group Financial Consultant</strong>의 약칭으로, 삼성생명(주) 내부의 <strong>GFC 사업부</strong>에 귀속되어 있는 독립적인 영업·컨설팅 조직입니다.
+      기업 경영에서 발생하는 각종 위험에 대비한 컨설팅과 단체 보험, 가업 승계, 법인명의 보험 설계, 퇴직 연금 등 기업 관련 종합 금융 서비스를 제공합니다.
+    </p>
+    <p>
+      신문 기사에서도 GFC는 <strong>"기업경영에서 발생하는 각종 위험에 대비한 컨설팅을 하는 영업조직"</strong>으로 정의되며,
+      삼성생명의 브랜드 신뢰도와 풍부한 인프라를 활용하여 영업 및 컨설팅 활동을 수행하는 체계로 운영됩니다.
+    </p>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">소속 법인</div>
+        <div class="value">삼성생명(주) GFC사업부</div>
+      </div>
+      <div class="info-item">
+        <div class="label">지점명</div>
+        <div class="value">서초법인지역단 테헤란법인지점</div>
+      </div>
+      <div class="info-item">
+        <div class="label">주소</div>
+        <div class="value">강남구 테헤란로 424, FN Tower</div>
+      </div>
+      <div class="info-item">
+        <div class="label">담당 팀장</div>
+        <div class="value">이 수 용 (010-7573-7878)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 규모 및 현황 통계 -->
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <h2>규모 및 현황 통계</h2>
+  </div>
+
+  <div class="card">
+    <h3>GFC 전체 규모 (신문 기사 기반)</h3>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-val">73~76개</div>
+        <div class="stat-label">전국 지점 수<br>(동아: 73개 / 중앙: 76개)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">3,200~3,600명</div>
+        <div class="stat-label">컨설턴트 수<br>(동아: 약3,600명 / 중앙: 3,200명)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">55~58세</div>
+        <div class="stat-label">평균 연령<br>(동아: 만55세 / 중앙: 58세)</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:18px;">
+      <div class="hl-title">📊 인원 구성 및 배경</div>
+      <p>
+        중앙일보 기사 기준, GFC 재원의 성별 비율은 <strong>남성 78%, 여성 22%</strong>로 구성되어 있습니다.
+        평균 연령이 55~58세로 높은 것은, 대부분이 퇴직 후 인생 2막을 준비하는 <strong>"베이비부머 세대"</strong>에 해당하기 때문입니다.
+        이전 직업으로는 일반 직장인, 자영업자, 중소기업 CEO, 법인 대표, 회사원 등 다양한 경력 백그라운드가 포함되어 있습니다.
+      </p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:12px;">
+      <div class="hl-title">📈 삼성생명 기업 지표</div>
+      <p>
+        삼성생명의 자산 규모는 <strong>314조원</strong>에 달하며, 보험금 지급 능력을 나타내는 지표인 <strong>RBC 비율은 236%</strong>로 건고한 재무구조를 유지합니다.
+        또한 <strong>국가고객만족도(NCSI)에서 19년 연속 1위</strong>를 달성하는 등 높은 브랜드 신뢰도와 안정적인 자산 운영 능력을 보유하고 있습니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3. 핵심 사업 영역 -->
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <h2>핵심 사업 영역</h2>
+  </div>
+
+  <div class="card">
+    <h3>기업재무 컨설팅 4가지 Plan</h3>
+    <p>
+      삼성생명 GFC는 중소기업 시장을 주요 대상으로 하며, 기업의 라이프사이클 단계에 맞는 종합 컨설팅을 제공합니다.
+      采용 제안서에서 명시된 주요 서비스 영역은 다음 네 축으로 구성됩니다.
+    </p>
+
+    <div class="info-grid" style="margin-top:16px;">
+      <div class="info-item" style="background:#eef2ff; border:1px solid #c7d2fe;">
+        <div class="label" style="color:#4338ca;">① 기업재해보장 Plan</div>
+        <div class="value" style="font-size:13px; font-weight:600; color:#3730a3;">종업원 단체보험·재해 보장 설계</div>
+      </div>
+      <div class="info-item" style="background:#eef2ff; border:1px solid #c7d2fe;">
+        <div class="label" style="color:#4338ca;">② CEO Plan</div>
+        <div class="value" style="font-size:13px; font-weight:600; color:#3730a3;">법인 컨설팅·CEO 보장 설계</div>
+      </div>
+      <div class="info-item" style="background:#fdf8ec; border:1px solid #e8c96d;">
+        <div class="label" style="color:#9a7420;">③ 개인보장 Plan</div>
+        <div class="value" style="font-size:13px; font-weight:600; color:#78611a;">종업원·CEO 개인 보험 설계</div>
+      </div>
+      <div class="info-item" style="background:#fdf8ec; border:1px solid #e8c96d;">
+        <div class="label" style="color:#9a7420;">④ 퇴직연금 Plan</div>
+        <div class="value" style="font-size:13px; font-weight:600; color:#78611a;">기업 퇴직연금 제안·관리</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>가업승계 및 절세 컨설팅 <span class="tag">핵심 특장점</span></h3>
+    <p>
+      채용 제안서와 동아일보 기사 모두에서 강조되는 <strong>GFC의 핵심 경쟁 포인트</strong>입니다.
+      우리나라 중소기업은 820만개 이상(전체의 99% 이상)이며, 이 중소기업 대표들의 공통적인 고민은
+      <strong>①과도한 세금 부담</strong>과 <strong>②고령화로 인한 가업 승계 문제</strong>입니다.
+    </p>
+    <p>
+      특히 <strong>사전 증여세 및 상속세 부담</strong>이 크게 문제가 되는데, 한국의 최고 상속세율은 50%로
+      미국(40%), 프랑스(45%) 등 주요 선진국보다 높은 수준입니다.
+      GFC는 이런 상황에서 <strong>법인 컨설팅을 통한 절세 전략과 가업 승계 계획</strong>을 종합적으로 제안하는 역할을 수행합니다.
+    </p>
+
+    <div class="gold-box">
+      <div class="hl-title">⚠️ 중대재해처벌법 관련 리스크 대비</div>
+      <p>
+        동아일보 기사에서도 <strong>중대재해처벌법</strong>이 2024년 1월말부터 50인 미만 사업장으로 확대되면서,
+        중소기업 사업장의 리스크가 크게 증가했음을 강조합니다.
+        재해 발생 시 사업장의 책임자는 <strong>1년 이상의 징역 또는 10억원 이하의 벌금</strong>을 받을 수 있고,
+        근로자와 유가족의 손해배상도 책임지아야 합니다.
+        이를 대비하는 <strong>종업원 단체 보험과 기업재해보장</strong>이 GFC의 주요 제안 서비스 중 하나입니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 4. 복합 금융 서비스 및 협업 생태계 -->
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <h2>복합 금융 서비스 및 협업 생태계</h2>
+  </div>
+
+  <div class="card">
+    <h3>제공 가능한 복합 영업 서비스</h3>
+    <p>
+      GFC는 단순히 보험 판매에 그치지 않고 <strong>생명, 화재, 카드, 증권, 퇴직연금</strong> 등
+      다양한 금융 상품을 포함한 복합 영업 활동을 수행합니다.
+    </p>
+    <div class="pill-list">
+      <div class="pill">생명보험</div>
+      <div class="pill">화재보험</div>
+      <div class="pill">카드</div>
+      <div class="pill">증권</div>
+      <div class="pill">퇴직연금</div>
+      <div class="pill">부동산 컨설팅</div>
+      <div class="pill">자산관리</div>
+      <div class="pill">금융투자</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>전문가 협업 네트워크</h3>
+    <p>
+      GFC 컨설턴트는 다음과 같은 다양한 외부 전문가 및 삼성생명 내부 조직과 협업하여
+      고객에게 종합적인 서비스를 제공할 수 있습니다.
+    </p>
+    <div class="pill-list">
+      <div class="pill">세무사</div>
+      <div class="pill">회계사</div>
+      <div class="pill">노무사</div>
+      <div class="pill">변리사</div>
+      <div class="pill">법무사</div>
+      <div class="pill">감정평가사</div>
+      <div class="pill">정책자금 전문가</div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:18px;">
+      <div class="hl-title">🏛️ 내부 지원 조직</div>
+      <p>
+        <strong>삼성패밀리오피스 (Family Office)</strong>: 초고액 자산가를 위한 대한민국 최고의 PB센터로, 종합 가문관리 서비스에 특화된 조직입니다.<br>
+        <strong>FP센터 (Financial Planning)</strong>: 부유층 고객을 대상으로 상속·증여·세무 등 재무 및 관련 제반 서비스를 제공합니다.<br>
+        <strong>기업경영컨설팅센터</strong>: 법무법인, 감정평가법인 등 외부 전문 기관과 협약을 맺고 지원하는 조직입니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 5. 교육 및 성장 체계 -->
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <h2>교육 및 성장 체계</h2>
+  </div>
+
+  <div class="card">
+    <h3>체계적 교육 프로그램</h3>
+    <p>
+      삼성생명 GFC는 새로운 컨설턴트를 위해 <strong>체계적인 교육과 육성 프로그램</strong>을 구성하여 있습니다.
+      등록 시점부터 한 달 동안 기본 자질을 갖추기 위한 컨설팅 교육을 받고,
+      이후 <strong>7개월간 기업 컨설팅 기법과 재무제표 분석 등의 심화 교육</strong>을 수료하고 나면
+      가업승계 및 세무 컨설팅에 대한 교육에 참여하여 역량을 더욱 높일 수 있습니다.
+    </p>
+    <p>
+      또한 <strong>'언서대', '세무 최고의 과정', '법인 MBA', '법인 아카데미'</strong> 등
+      전문직 과정에도 참여 가능하여 법인 컨설팅 전문가로 성장할 수 있습니다.
+    </p>
+
+    <div class="timeline" style="margin-top:20px;">
+      <div class="tl-item">
+        <div class="tl-time">등록 후 1개월</div>
+        <div class="tl-text">기본 자질 교육 및 컨설팅 기초 학습</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">1~7개월</div>
+        <div class="tl-text">기업 컨설팅 기법·재무제표 분석 등 심화 교육</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">7개월 이후</div>
+        <div class="tl-text">가업승계·세무 컨설팅 교육 및 독립 영업 활동</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">전문직 과정</div>
+        <div class="tl-text">법인 MBA · 법인 아카데미 등 고급 교육 참여 가능</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 채용 조건 및 보상 -->
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <h2>채용 조건 및 보상 구조</h2>
+  </div>
+
+  <div class="two-col">
+    <div class="card" style="margin-bottom:0;">
+      <h3>지원 가능 대상</h3>
+      <p style="font-size:13px;">
+        정년 퇴직자 · 공무원 출신 · 기업체 임원 · 중견간부 · 금융권 출신 · 개인사업자 ·
+        법인영업 및 컨설팅 경험자 · 타 보험사 GA 경력자 등.
+        <strong>40세 이상</strong>으로 새로운 일에 도전하려는 진취적이고 영업마인드가 있는 분들을 모집합니다.
+      </p>
+    </div>
+    <div class="card" style="margin-bottom:0;">
+      <h3>핵심 보상 포인트</h3>
+      <p style="font-size:13px;">
+        <strong>정년 없는</strong> 40~60대까지 안정적인 제2의 일자리 ·
+        성과에 비례한 수수료 기반 소득 체계 ·
+        <strong>2년 육성 기간 동안</strong> 정착수수료 + 신인성과 보너스 지원 ·
+        창업비용에 대한 부담 없이 전문직 사업가로 출발 가능.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h3>1월 입과자 특별 지원 (한정 이벤트)</h3>
+    <div class="info-grid">
+      <div class="info-item" style="background:#eef2ff; border:1px solid #c7d2fe; text-align:center;">
+        <div class="label" style="color:#4338ca;">면접(TS) 진행 시</div>
+        <div class="value" style="color:#3730a3;">5만원</div>
+      </div>
+      <div class="info-item" style="background:#eef2ff; border:1px solid #c7d2fe; text-align:center;">
+        <div class="label" style="color:#4338ca;">1월 교육 수료 시</div>
+        <div class="value" style="color:#3730a3;">10만원</div>
+      </div>
+      <div class="info-item" style="background:#fdf8ec; border:1px solid #e8c96d; text-align:center;">
+        <div class="label" style="color:#9a7420;">2월 등록 확정 시</div>
+        <div class="value" style="color:#78611a;">10만원</div>
+      </div>
+      <div class="info-item" style="background:#f0fdf4; border:1px solid #a7f3d0; text-align:center;">
+        <div class="label" style="color:#166534;">합계</div>
+        <div class="value" style="color:#15803d;">25만원</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">※ 교육비 80만원은 별도로 발생합니다.</p>
+  </div>
+
+  <!-- 7. 신문 기사 출처 정리 -->
+  <div class="divider"></div>
+
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <h2>출처 기사 요약</h2>
+  </div>
+
+  <div class="newspaper-box">
+    <div class="newspaper-icon ni-donga">📰</div>
+    <div>
+      <div class="nw-title">종업원 단체 보험·가업승계 등 기업재무컨설턴트에게 맡기세요</div>
+      <div class="nw-meta">동아일보 · 2024년 02월 29일 (목) · E07면 · 정순구 기자</div>
+      <div class="nw-summary">
+        중대재해처벌법의 50인 미만 사업장 확대와 과도한 상속세 부담 등의 문제로 중소기업 대표들의 고민이 깊어지고 있다고 보고,
+        삼성생명 GFC의 종업원 복리후생 및 산업재해 리스크 관리·가업승계 컨설팅 서비스를 소개합니다.
+        전국 73개 지점에서 약 3,600명의 컨설턴트가 활동하며, 평균 연령 만 55세 퇴직 후 인생 2막을 준비하는 베이비부머 세대가 주축입니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="newspaper-box">
+    <div class="newspaper-icon ni-joongang">📰</div>
+    <div>
+      <div class="nw-title">당당한 인생 2막 연다! 정년 없이 일할 수 있는 직업으로 'GFC' 주목</div>
+      <div class="nw-meta">중앙일보 · 2023년 01월 30일 (월) · C02면 특기 · 김성수 기자</div>
+      <div class="nw-summary">
+        퇴직 후 제2의 인생에 대한 사회적 관심이 높아지는 가운데 삼성생명 GFC가 정년 없이 일할 수 있는 직업으로 주목받고 있다고 보고,
+        GFC의 체계적 교육 프로그램, 복합 영업 구조, FP센터·패밀리오피스 등 내부 지원 조직을 상세히 소개합니다.
+        전국 76개 지점에서 3,200명이 활동하며, 남성 78%·여성 22% 구성, 평균 연령 58세로
+        베이비부머 세대가 주축임을 강조합니다.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>본 자료는 업로드된 채용 제안서 및 신문 기사 내용을 종합하여 정리한 것입니다.</p>
+</footer>
+
+</body>
+</html>
