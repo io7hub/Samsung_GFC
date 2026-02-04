@@ -595,6 +595,9 @@ def main():
         </div>
         """, unsafe_allow_html=True)
 
+        st.markdown(" ")
+        st.markdown(" ")
+
         # ── CHARTS ROW ──
         c1, c2 = st.columns([1, 1], gap="small")
         with c1:
