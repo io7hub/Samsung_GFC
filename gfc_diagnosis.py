@@ -703,7 +703,7 @@ def main():
 
               <div class="sc-sec">1. 도입 인사</div>
               <div class="sc-intro">
-                안녕하세요, {info.get('ceo','대표자') or '대표자'}님. 삼성생명 GFC 기업재무컨설팅 <strong>{(info.get('company','') or '○○(주)').replace('(주)','').replace('(유)','').replace('㈜','')}</strong> 담당 컨설턴트입니다.<br><br>
+                안녕하세요, {info.get('ceo','대표자') or '대표자'}대표님. 삼성생명 GFC 기업재무컨설팅 <strong>{(info.get('company','') or '○○(주)').replace('(주)','').replace('(유)','').replace('㈜','')}</strong> 담당 컨설턴트입니다.<br><br>
                 오늘 귀사의 법인 리스크 사전 진단을 완료했는데, 종합 리스크율이 <strong style="color:{clr}">{total_pct:.0f}%({lbl})</strong> 수준으로 나왔습니다.<br>
                 특히 <strong>'{priority[0]['section'] if priority else '주요 영역'}'</strong> 부분에서 즉각적인 대비가 필요한 사항들이 도출되었습니다.<br><br>
                 오늘 주요 내용을 안내드리고, 귀사에 맞는 종합 컨설팅 제안까지 함께 검토하겠습니다.

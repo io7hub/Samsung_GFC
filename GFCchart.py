@@ -115,7 +115,7 @@ st.markdown("""
 # 1. 샘플 진단 데이터 (테스트용)
 # ─────────────────────────────────────
 SAMPLE_DATA = {
-    "company_name": "테스트 (주)",
+    "company_name": "우리기업 (주)",
     "industry": "제조업",
     "employees": 45,
     "annual_revenue": 12,          # 억원
@@ -358,7 +358,7 @@ def tab_consultant(data: dict):
             from PIL import Image
             import os
             # 로컬 개발 시: 이미지 파일 경로 지정
-            avatar_path = "assets/ken_avatar.jpg"  # 프로젝트에 assets 폴더 생성 후 이미지 저장
+            avatar_path = "ken_avatar.jpg"  # 프로젝트에 assets 폴더 생성 후 이미지 저장
             if os.path.exists(avatar_path):
                 avatar_img = Image.open(avatar_path)
             else:
@@ -380,7 +380,7 @@ def tab_consultant(data: dict):
         except:
             # 에러 발생 시 기본 아이콘
             st.markdown("""
-            <div style="width:180px; height:180px; background:linear-gradient(135deg, #00d4aa, #00b894);
+            <div style="width:120px; height:120px; background:linear-gradient(135deg, #00d4aa, #00b894);
                        border-radius:50%; display:flex; align-items:center; justify-content:center;
                        font-size:72px; color:#fff; border:3px solid #00d4aa; 
                        box-shadow: 0 4px 12px rgba(0,212,170,0.3); margin:0 auto;">
