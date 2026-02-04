@@ -257,7 +257,7 @@ PLOT_LAYOUT = dict(
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
     font=dict(family="Noto Sans KR", color="#cbd5e1", size=11),
-    margin=dict(l=80, r=70, t=20, b=20),
+    margin=dict(l=50, r=50, t=20, b=20),
 )
 
 def fig_gauge(pct):
