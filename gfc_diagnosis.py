@@ -311,7 +311,7 @@ def fig_radar(km, cr, aw, sc):
             angularaxis=dict(gridcolor="#1e3a5f", tickfont=dict(size=10, color="#94a3b8")),
             bgcolor="rgba(0,0,0,0)"
         ),
-        **PLOT_LAYOUT, height=300, showlegend=False
+        **PLOT_LAYOUT, height=270, showlegend=False
     )
     return fig
 
