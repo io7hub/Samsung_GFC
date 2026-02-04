@@ -299,8 +299,8 @@ def fig_radar(km, cr, aw, sc):
         r=vals_closed, theta=cats_closed,
         fill="toself",
         fillcolor="rgba(220,38,38,0.15)",
-        line=dict(color="#dc2626", width=2),
-        marker=dict(size=6, color="#dc2626"),
+        line=dict(color="#60dc26", width=2),
+        marker=dict(size=6, color="#60dc26"),
         name="리스크율",
         hovertemplate="%{theta}<br>%{r:.0f}%<extra></extra>"
     ))
