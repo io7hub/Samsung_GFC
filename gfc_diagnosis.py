@@ -257,7 +257,7 @@ PLOT_LAYOUT = dict(
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
     font=dict(family="Noto Sans KR", color="#cbd5e1", size=11),
-    margin=dict(l=10, r=10, t=10, b=10),
+    margin=dict(l=80, r=70, t=20, b=20),
 )
 
 def fig_gauge(pct):
@@ -281,8 +281,8 @@ def fig_gauge(pct):
             threshold=dict(line=dict(color=clr, width=3), value=pct),
         )
     ))
-    fig.update_layout(**PLOT_LAYOUT, height=220)
-    fig.add_annotation(text=f"<b>{lbl}</b>", x=0.5, y=-0.08,
+    fig.update_layout(**PLOT_LAYOUT, height=210)
+    fig.add_annotation(text=f"<b>{lbl}</b>", x=0.5, y=-0.03,
                        xref="paper", yref="paper", showarrow=False,
                        font=dict(size=14, color=clr, family="Noto Sans KR"))
     return fig
@@ -311,7 +311,7 @@ def fig_radar(km, cr, aw, sc):
             angularaxis=dict(gridcolor="#1e3a5f", tickfont=dict(size=10, color="#94a3b8")),
             bgcolor="rgba(0,0,0,0)"
         ),
-        **PLOT_LAYOUT, height=260, showlegend=False
+        **PLOT_LAYOUT, height=300, showlegend=False
     )
     return fig
 
