@@ -281,7 +281,7 @@ def fig_gauge(pct):
             threshold=dict(line=dict(color=clr, width=3), value=pct),
         )
     ))
-    fig.update_layout(**PLOT_LAYOUT, height=210)
+    fig.update_layout(**PLOT_LAYOUT, height=250)
     fig.add_annotation(text=f"<b>{lbl}</b>", x=0.5, y=-0.03,
                        xref="paper", yref="paper", showarrow=False,
                        font=dict(size=14, color=clr, family="Noto Sans KR"))
